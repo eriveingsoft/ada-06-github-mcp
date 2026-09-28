@@ -84,6 +84,11 @@
   - **Pruebas Automatizadas:** `tests/test_domain.py` (`test_customer_from_dict_rejects_none_fields_ac_06`, `test_customer_from_dict_rejects_empty_or_whitespace_strings_ac_07`, `test_customer_from_dict_prevents_casting_none_to_literal_string_ac_06`)
     $$\downarrow$$
   - **Matriz de Control:** `docs/traceability.md` (Filas de T-07 registradas con estado `Done`).
+  ## 6. Traceability
+
+| Issue / Need | PR | Code / Files | Test / Evidence | Estado |
+| :--- | :--- | :--- | :--- | :--- |
+| Issue #1 / Validación estricta de nulos y vacíos | PR #2 | `src/domain.py` | `tests/test_domain.py` | Covered |
 
 ## 7. Permission Review 
 * **Authentication:** Conexión mediante GitHub Personal Access Token (PAT) inyectado en el entorno local del agente.
@@ -102,7 +107,6 @@
 **What did you verify yourself?** 
 Verifiqué manualmente la correcta configuración del Token de Acceso Personal (PAT) asegurando que tuviera permisos estrictos de "Read-only". Comprobé personalmente la lista de las 22 herramientas expuestas por el servidor MCP en Antigravity para confirmar que ninguna tuviera capacidades de escritura. Además, validé que las relaciones establecidas en la tabla de trazabilidad (Issue → PR → Código) existieran realmente en los commits del repositorio del ADA-05, evitando aceptar alucinaciones de la IA.
 
-**What AI conclusions did you reject or modify?** 
 **What AI conclusions did you reject or modify?** 
 Ninguna conclusión principal fue rechazada. Tras revisar las respuestas de la IA sobre la arquitectura, la trazabilidad del Issue/PR y el análisis de seguridad, determiné que sus deducciones eran precisas y coherentes. Me limité a confirmar que sus inferencias estuvieran respaldadas por la evidencia en el repositorio, pero no fue necesario modificar o descartar su análisis final, ya que se apegó a un perfil técnico y estructurado.
 
