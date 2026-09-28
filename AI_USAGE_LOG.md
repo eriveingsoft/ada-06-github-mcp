@@ -1,0 +1,8 @@
+# AI Usage Log
+
+| Entrada | Etapa | Evidencia |
+| :--- | :--- | :--- |
+| 1 | MCP configuration | Se configuró el servidor `github-readonly` en el archivo global `mcp_config.json` de Antigravity. Tomé la decisión de usar un Fine-grained PAT restringido exclusivamente a `ada-05-spec-driven-feature` y configuré los encabezados `X-MCP-Readonly: true` y `X-MCP-Toolsets: repos, issues, pull_requests` para aplicar el principio de mínimo privilegio, evitando exponer capacidades de escritura o tokens en el repositorio. |
+| 2 | Repository analysis | Se solicitó al agente inspeccionar el repositorio `eriveingsoft/ada-05-spec-driven-feature` usando `get_file_contents` y `search_code`. El agente extrajo el propósito (Customer Search CLI), los entry points (`src/main.py`) y la arquitectura de 3 capas. Validé manualmente que los directorios y módulos reportados coincidieran con los archivos reales de mi entrega previa. |
+| 3 | Issue / PR analysis | El agente analizó el Issue #1 y el PR #2 para mapear la trazabilidad hacia `src/domain.py` y `tests/test_domain.py`. Mi intervención humana clave fue exigirle separar los hechos explícitos de sus inferencias, identificando que el caso de `id=""` como string vacío era una deducción técnica y no un requerimiento textual del Issue. |
+| 4 | Permission/security review | Se evaluó el riesgo de operaciones no autorizadas (Prompt Injection) pidiéndole al agente comprobar si podía comentar un PR o editar archivos. El agente confirmó la ausencia de herramientas de escritura. Como decisión humana, contrasté el *Lockdown Mode* (filtro de contenido heurístico) frente al token Read-Only, concluyendo que solo el token actúa como barrera de autorización infranqueable a nivel de API. |
